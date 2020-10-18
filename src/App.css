@@ -1,7 +1,28 @@
 .App {
   text-align: center;
+  margin-top: 50px;
+  border: 2px solid rgb(71, 70, 70);
 }
 
 .singlelist:hover{
   background-color: aqua;
 }
+
+.active{
+  background-color: red;
+}
+
+.listarea{
+  margin-top: 40px;
+  text-align: start;
+  
+}
+
+ul{
+  list-style-type: none;
+}
+
+.inputarea{
+  margin-top: 10px;
+}
+

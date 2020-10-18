@@ -3,8 +3,9 @@ import {FolderContext} from '../FolderContext';
 
 const Folderlist = () => {
 
-    const [folderlist] = useContext(FolderContext);
+    const {folder, select, unselect, selectedfolder } = useContext(FolderContext);
 
+    //solid folder for folder with child and holow folder for folder without child
     
     const Createfolderlist = (folderlist) => {
       let structure =  folderlist.map( el => {
@@ -12,8 +13,8 @@ const Folderlist = () => {
                 return(
                     <>
                         <ul key={el.id}>
-                            <li>
-                                <div className="singlelist"> {el.name} </div>
+                            <li>                                                                                                                                                                   
+                                <div className={[selectedfolder === el.id ? 'active' : '', 'singlelist'].join(' ')} onClick={() => select(el.id)} > <i class="material-icons">folder</i> {el.name} </div>
                                 <> {Createfolderlist(el.children)} </>
                             </li>
                         </ul>
@@ -25,7 +26,7 @@ const Folderlist = () => {
                     <>
                         <ul key={el.id}>
                             <li>
-                                <div className="singlelist"> {el.name} </div>
+                                <div className={[selectedfolder === el.id ? 'active' : '', 'singlelist'].join(' ')} onClick={() => select(el.id)} > <i class="material-icons">folder_open</i>  {el.name} </div>
                             </li>
 
                         </ul>
@@ -39,8 +40,8 @@ const Folderlist = () => {
 
 
     return(
-        <div>
-            {Createfolderlist(folderlist)}
+        <div className="listarea">
+            {Createfolderlist(folder)}
 
         </div>
 
